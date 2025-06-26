@@ -12,6 +12,7 @@ import { CraftingUI } from './components/CraftingUI';
 import { BlockType, InventorySlot } from './types/Block';
 import { CraftingRecipe } from './types/Crafting';
 import { CraftingManager } from './game/CraftingManager';
+import { Inventory } from './game/Inventory';
 
 type GameState = 'login' | 'playing';
 
@@ -423,7 +424,7 @@ function App() {
       <CraftingUI
         isOpen={isCraftingOpen}
         onClose={() => setIsCraftingOpen(false)}
-        inventory={gameEngineRef.current?.getInventory() || new (require('./game/Inventory').Inventory)()}
+        inventory={gameEngineRef.current?.getInventory() || new Inventory()}
         onCraft={handleCraft}
         isCraftingTable={false} // For now, always use 2x2 grid
       />
